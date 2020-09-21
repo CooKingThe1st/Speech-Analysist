@@ -1,0 +1,39 @@
+<aiml version = "1.0.1" encoding = "UTF-8">
+	<!-- std-startup.xml -->
+
+	<!-- Category is an atmic AIML unit -->
+	<category>
+		<!-- Patern to match in user input -->
+		<!-- If user enters "LOAD AIML B" -->
+		<pattern>LOAD AIML B</pattern>
+
+		<!-- Template is the response to the pattern -->
+		<!-- This learn an aiml file -->
+		<template>
+			<!-- <learn>step_by_step_instru.aiml</learn> -->
+			<learn>aiml_ref/aiml_examlple_that.aiml</learn>
+			<!-- add more aiml here -->
+		</template>
+	</category>
+
+	<category>
+		<pattern>LOAD GET SET GO</pattern>
+		<template>
+			<learn>aiml_ref/aiml_example_get_set.aiml</learn>
+		</template>
+	</category>
+
+	<category>
+		<pattern>LOAD ALL</pattern>
+		<template>
+			<learn>aiml_ref/*.aiml</learn>
+		</template>
+	</category>
+
+	<category>
+		<pattern>LOAD BIBO</pattern>
+		<template>
+			<learn>aiml_ref/alexa_fake.aiml</learn>
+		</template>
+	</category>
+</aiml>
