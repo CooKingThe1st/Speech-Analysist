@@ -19,8 +19,9 @@ def speech_synthesis(text, lang , remove): # tao mot ham nhan 3 tham so
 def aiml_process(text):
 	expected_output = kernel.respond(text)
 	print(expected_output)
+
 	# synthesis here
-	speech_synthesis(text = expected_output, lang = 'en', remove = False)
+	output_text.append(expected_output)
 	
 	r_device = kernel.getPredicate("alexa_device").strip().lower()
 	r_command = kernel.getPredicate("alexa_command").strip().lower()
@@ -84,7 +85,10 @@ else :
 with m as source:
     r.adjust_for_ambient_noise(source)  # we only need to calibrate once, before we start listening
 
+output_text = []
 r.listen_in_background(m, callback)
 
 while (1) :
-	pass
+	if (len(output_text)):
+		speech_synthesis(text = output_text[0], lang = 'en', remove = False)
+		output_text.pop(0)
